@@ -13,6 +13,8 @@ class UserList extends Model
     protected $fillable = [
         'title',
         'body',
-        'image',
+        //カラム追加したので、以下も追加（3/1）
+        'file_name',
+        'file_path'
     ];
 }

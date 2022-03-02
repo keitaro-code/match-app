@@ -1,48 +1,3 @@
-/* *
-{
-    box-sizing: border-box;
-}
-.title
-{
-    text-align: center;
-}
-
-.container
-{
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 50px;
-}
-
-.btn
-{
-    width: 600px;
-    text-align: center;
-
-
-    font-size: 25px;
-    border: 2px solid #eec60a;
-    border-radius: 6px;
-    padding: 15px;
-}
-.btn:hover
-{
-    color: white;
-    background-color: #eec60a;
-    border: 2px solid white;
-    transition: .2s ease-in-out;
-
-}
-
-a
-{
-    width: 100%;
-    text-decoration: none;
-    color: black;
-} */
-
-
-/* ここからはコピペ */
 a
 {
     text-decoration: none;
@@ -143,4 +98,3 @@ button
 {
     margin-left: 8px;
 }
-/* コピペ終了

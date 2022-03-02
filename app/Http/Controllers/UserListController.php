@@ -42,8 +42,26 @@ class UserListController extends Controller
         $userList = new UserList();
         $userList->title = $request->title;
         $userList->body = $request->body;
-        $userList->save();
 
+
+        // 追加（画像機能）
+        $request->validate([
+			'image' => 'required|file|image|mimes:png,jpeg'
+		]);
+		$upload_image = $request->file('image');
+
+		if($upload_image) {
+			//アップロードされた画像を保存する
+			$path = $upload_image->store('uploads',"public");
+			//画像の保存に成功したらDBに記録する
+			if($path){
+                $userList->file_name = $upload_image->getClientOriginalName();
+                $userList->file_path = $path;
+			}
+		}
+
+        $userList->save();
+        
         return redirect()
             ->route('users.user_list');
     }

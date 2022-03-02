@@ -17,6 +17,12 @@
             <button class="btn">[x]</button>
         </form>
     </h1>
+
+    {{-- 追加（画像機能） --}}
+    <div style="width: 18rem; float:left; margin: 16px;">
+        <img src="{{ Storage::url($userList->file_path) }}" style="width:100%;"/>
+        <p>{{ $userList->file_name }}</p>
+    </div>
     <p>{!! nl2br(e($userList->body)) !!}</p>
 
     <script>
