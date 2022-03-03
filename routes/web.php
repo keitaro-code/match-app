@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\UserListController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Companies\CompaniesHomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +45,19 @@ Route::delete('/users/{userList}/destroy', [UserListController::class, 'destroy'
     ->name('users.destroy')
     ->where('userList', '[0-9]+');
 
+//ログイン
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// マルチログイン
+Route::prefix('companies')
+    ->namespace('App\Http\Controllers\Companies')
+    ->name('companies.')
+    ->group(function(){
+    Auth::routes();
+
+    Route::get('/home', [CompaniesHomeController::class,'index'])
+        ->name('companies_home');
+});

@@ -11,7 +11,7 @@
     <main>
         <div class="container">
             <h1 class="title">Which one will you choose? </h1>
-            <a class="top-btn" href="">Company</a>
+            <a class="top-btn" href="{{ route('companies.login') }}">Company</a>
             <a class="top-btn" href="{{ route('login') }}">Influencer</a>
         </div>
     </main>

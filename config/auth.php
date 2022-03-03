@@ -35,11 +35,23 @@ return [
     |
     */
 
+    // 追加したcompaniesの設定を行うため/config/auth.phpファイルにCompanies用の追加のGuardを設定します。
+
     'guards' => [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'companies' => [
+        'driver' => 'session',
+        //お手本では複数形になっている。'provider' => 'employees',
+        'provider' => 'companies',
+    ],
+    'api' => [
+        'driver' => 'token',
+        'provider' => 'users',
+        'hash' => false,
+    ],
     ],
 
     /*
@@ -64,6 +76,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'companies' => [
+        'driver' => 'eloquent',
+        // \Modelいらない？→必要でした！
+        'model' => App\Models\Companies::class,
+    ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -93,6 +110,12 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        'companies' => [
+            'provider' => 'companies',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+    ],
     ],
 
     /*
@@ -107,5 +130,8 @@ return [
     */
 
     'password_timeout' => 10800,
+
+
+
 
 ];
