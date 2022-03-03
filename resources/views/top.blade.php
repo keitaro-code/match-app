@@ -9,10 +9,10 @@
 </head>
 <body>
     <main>
-        <h1 class="title">Which one will you choose? </h1>
         <div class="container">
-            <a class="btn" href="">Company</a>
-            <a class="btn" href="">Influencer</a>
+            <h1 class="title">Which one will you choose? </h1>
+            <a class="top-btn" href="">Company</a>
+            <a class="top-btn" href="{{ route('login') }}">Influencer</a>
         </div>
     </main>
 </body>

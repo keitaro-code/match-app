@@ -42,3 +42,7 @@ Route::patch('/users/{userList}/update', [UserListController::class,'update'])
 Route::delete('/users/{userList}/destroy', [UserListController::class, 'destroy'])
     ->name('users.destroy')
     ->where('userList', '[0-9]+');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
