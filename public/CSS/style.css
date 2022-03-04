@@ -1,10 +1,16 @@
+*
+{
+    padding: 0;
+    font-family: Poppins, "Helvetica Neue", Helvetica, Arial, "Hiragino Sans", ヒラギノ角ゴシック, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro W3", Roboto, メイリオ, Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+}
+
 a
 {
     text-decoration: none;
 }
 
 .container{
-    width: 480px;
+    width: 560px;
     margin: 40px auto;
 }
 
@@ -12,7 +18,8 @@ a
     font-size: 14px;
 }
 
-h1{
+h1
+{
     border-bottom: 1px solid;
     margin: 16px 0;
     padding-bottom: 8px;
@@ -100,4 +107,48 @@ button
 }
 
 /* Add by me */
+.projects-index-user_list > ul
+{
+    list-style: none;
+}
+.projects-index-user
+{
+    display: inline-block;
+    width: 560px;
+    height: 238px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
 
+.projects-index-user > a
+{
+    color: black;
+}
+
+.projects-index-user > a:hover .project-title
+{
+    color: #006F8E;
+}
+
+img
+{
+    display: block;
+    /* max-width: 100%; */
+    width: 560px;
+    height: 238px;
+}
+
+a > img
+{
+    margin-bottom:5px ;
+}
+
+.project-detail > h2
+{
+    font-size: 22px;
+}
+
+.project-detail > p
+{
+    font-size: 14px;
+}

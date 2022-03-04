@@ -15,9 +15,12 @@
 
                             <img src="{{ Storage::url($userList->file_path) }}" style="width:100%;"/>
                             {{-- <p>{{ $userList->file_name }}</p> --}}
-                            {{ $userList->title }}
-
+                            <div class="project-detail">
+                                <h2 class="project-title">{{ $userList->title }}</h2>
+                                <p class="project-body">{{ $userList->body }}</p>
+                            </div>
                     </a>
+                    <hr color="#dadada" style="margin-top: 20px">
                 </div>
             </li>
             @empty
