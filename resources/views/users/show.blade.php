@@ -9,13 +9,14 @@
 
     <h1>
         <span>{{ $userList->title }}</span>
-        <a href="{{ route('users.edit', $userList) }}">[Edit]</a>
+        <a class="btn" href="{{ route('users.edit', $userList) }}">編集</a>
         <form method="post" action="{{ route('users.destroy', $userList) }}" id="delete_userList">
             @method('DELETE')
             @csrf
 
-            <button class="btn">[x]</button>
+            <button class="btn btn-right">削除</button>
         </form>
+
     </h1>
 
     {{-- 追加（画像機能） --}}

@@ -36,7 +36,7 @@ h2
 
 h1 > a{
     font-weight: normal;
-    font-size: 16px;
+    font-size: 14px;
     margin-left: auto;
 }
 
@@ -44,6 +44,7 @@ h1 > a{
 li{
     line-height: 1.6;
     padding-bottom: 8px;
+    list-style: none;
 }
 
 p{
@@ -85,7 +86,7 @@ button
     margin-top: 8px;
 }
 
-.btn
+/* .btn
 {
     background: transparent;
     border: none;
@@ -94,7 +95,7 @@ button
     vertical-align: 1px;
     font-size: 16px;
     font-weight: normal;
-}
+} */
 
 .comment-form
 {
@@ -151,4 +152,24 @@ a > img
 .project-detail > p
 {
     font-size: 14px;
+}
+
+.btn
+{
+    color: #006F8E;
+    background-color: transparent;
+    border: solid#006F8E 1px;
+    padding:5px 20px;
+    border-radius: 6px;
+}
+.btn:hover
+{
+    background-color: #006F8E;
+    color: white;
+    transition: 0.5s;
+}
+
+.btn-right
+{
+    margin-left: 10px;
 }

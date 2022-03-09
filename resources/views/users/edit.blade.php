@@ -7,7 +7,7 @@
         &laquo;<a href="{{route('users.show',$userList)}}">Back</a>
     </div>
     <h1>Edit</h1>
-    <form action="{{ route('users.update', $userList) }}" method="post">
+    <form action="{{ route('users.update', $userList) }}" method="post" enctype="multipart/form-data">
         @method('Patch')
         @csrf
 
@@ -22,6 +22,8 @@
             </label>
         </div>
 
+        <input type="file" name="image" accept="image/png, image/jpeg">
+
         <div class="form-group">
             <label>
                 Body
@@ -33,7 +35,7 @@
         </div>
 
         <div class="form-button">
-            <button>Update</button>
+            <button type="submit">Update</button>
         </div>
     </form>
 </x-layout>

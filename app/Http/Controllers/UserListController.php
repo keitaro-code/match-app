@@ -6,6 +6,7 @@ use App\Models\UserList;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
+
 class UserListController extends Controller
 {
     /**
@@ -15,8 +16,12 @@ class UserListController extends Controller
      */
     public function index()
     {
-        $userLists = UserList::latest()->get();
+        // add for pagenate
+        // $projects = UserList::paginate(10);
+        $userLists = UserList::latest()->paginate(3);
+        // $userLists = UserList::paginate(3);
 
+        // add for pagenate
         return view('users.user_list')
             ->with(['userLists' => $userLists]);
     }
@@ -61,7 +66,7 @@ class UserListController extends Controller
 		}
 
         $userList->save();
-        
+
         return redirect()
             ->route('users.user_list');
     }
@@ -72,6 +77,7 @@ class UserListController extends Controller
      * @param  \App\Models\UserList  $userList
      * @return \Illuminate\Http\Response
      */
+
     public function show(UserList $userList)
     {
         return view('users.show')
@@ -101,6 +107,23 @@ class UserListController extends Controller
     {
         $userList->title = $request->title;
         $userList->body = $request->body;
+
+        // 追加（画像機能）
+        $request->validate([
+			'image' => 'required|file|image|mimes:png,jpeg'
+		]);
+		$upload_image = $request->file('image');
+
+		if($upload_image) {
+			//アップロードされた画像を保存する
+			$path = $upload_image->store('uploads',"public");
+			//画像の保存に成功したらDBに記録する
+			if($path){
+                $userList->file_name = $upload_image->getClientOriginalName();
+                $userList->file_path = $path;
+			}
+		}
+
         $userList->save();
 
         return redirect()

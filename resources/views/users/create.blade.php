@@ -38,7 +38,7 @@
 
         <div class="form-button">
             {{-- submit追加（間違ってる可能性大）--}}
-            <button type="submit">登録</button>
+            <button class="btn" type="submit">登録</button>
         </div>
     </form>
 </x-layout>
