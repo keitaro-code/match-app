@@ -14,3 +14,18 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .vue()
     .sass('resources/sass/app.scss', 'public/css');
+
+// Translate Mix 6's hot-reload settings for webpack-dev-server 5.
+mix.override(config => {
+    if (!config.devServer.onBeforeSetupMiddleware) return;
+
+    const { https, onBeforeSetupMiddleware, ...settings } = config.devServer;
+    config.devServer = {
+        ...settings,
+        server: https ? 'https' : 'http',
+        setupMiddlewares(middlewares, server) {
+            onBeforeSetupMiddleware(server);
+            return middlewares;
+        }
+    };
+});
