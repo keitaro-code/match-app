@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Gate;
+use App\Auth\StringTokenGuard;
+use Illuminate\Support\Facades\Auth;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,17 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Auth::extend('string-token', function ($app, $name, $config) {
+            $guard = new StringTokenGuard(
+                $app['auth']->createUserProvider($config['provider'] ?? null),
+                $app['request'],
+                $config['input_key'] ?? 'api_token',
+                $config['storage_key'] ?? 'api_token',
+                $config['hash'] ?? false
+            );
+            $app->refresh('request', $guard, 'setRequest');
+
+            return $guard;
+        });
     }
 }
