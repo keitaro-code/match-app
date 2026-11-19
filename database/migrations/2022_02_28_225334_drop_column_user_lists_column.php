@@ -13,6 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
+        if (! Schema::hasColumn('user_lists', 'image')) {
+            return;
+        }
+
         Schema::table('user_lists', function (Blueprint $table) {
             $table->dropColumn('image');
         });
